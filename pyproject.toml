@@ -1,0 +1,44 @@
+[project]
+name = "survey"
+version = "1.0.0"
+description = "Django Survey Application with Google Forms Integration"
+authors = [
+    {name = "Jahongir", email = "jahongir@example.com"},
+]
+dependencies = [
+    "Django>=4.2.0,<6.0.0",
+    "django-unfold>=0.15.0",
+    "psycopg2-binary>=2.9.0",
+    "redis>=4.5.0",
+    "celery>=5.3.0",
+    "python-dotenv>=1.0.0",
+    "Pillow>=10.0.0",
+    "django-simple-history>=3.4.0",
+]
+requires-python = ">=3.10"
+
+[project.optional-dependencies]
+dev = [
+    "pytest-django>=4.7.0",
+    "black>=23.0.0",
+    "isort>=5.12.0",
+    "flake8>=6.0.0",
+]
+
+[tool.black]
+line-length = 88
+target-version = ['py310']
+include = '\.pyi?$'
+extend-exclude = '''
+/(
+  | migrations
+  | venv
+  | build
+  | dist
+)/
+'''
+
+[tool.isort]
+profile = "black"
+multi_line_output = 3
+line_length = 88 

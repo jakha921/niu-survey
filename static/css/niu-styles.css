@@ -1,0 +1,250 @@
+/* NIU Survey Platform - Additional Styles */
+
+/* NIU Green Theme Variables */
+:root {
+    --niu-green-primary: #008000;
+    --niu-green-dark: #006600;
+    --niu-green-light: #00a000;
+    --niu-green-lighter: #40bf40;
+    --niu-green-lightest: #e6ffe6;
+}
+
+/* NIU Logo and Branding */
+.niu-logo {
+    background: var(--niu-green-primary);
+    border-radius: 8px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    color: white;
+}
+
+.niu-logo-sm {
+    width: 32px;
+    height: 32px;
+    font-size: 14px;
+}
+
+.niu-logo-md {
+    width: 48px;
+    height: 48px;
+    font-size: 18px;
+}
+
+.niu-logo-lg {
+    width: 64px;
+    height: 64px;
+    font-size: 24px;
+}
+
+/* NIU Button Styles */
+.btn-niu-primary {
+    background-color: var(--niu-green-primary);
+    border-color: var(--niu-green-primary);
+    color: white;
+    transition: all 0.3s ease;
+}
+
+.btn-niu-primary:hover {
+    background-color: var(--niu-green-dark);
+    border-color: var(--niu-green-dark);
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0, 128, 0, 0.3);
+}
+
+.btn-niu-outline {
+    background-color: transparent;
+    border: 2px solid var(--niu-green-primary);
+    color: var(--niu-green-primary);
+    transition: all 0.3s ease;
+}
+
+.btn-niu-outline:hover {
+    background-color: var(--niu-green-primary);
+    border-color: var(--niu-green-primary);
+    color: white;
+}
+
+/* NIU Header Styles */
+.niu-header-gradient {
+    background: linear-gradient(135deg, var(--niu-green-primary) 0%, var(--niu-green-light) 100%);
+}
+
+/* NIU Card Styles */
+.niu-card {
+    border: none;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 128, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.niu-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(0, 128, 0, 0.2);
+}
+
+.niu-card-header {
+    background: linear-gradient(135deg, var(--niu-green-primary) 0%, var(--niu-green-light) 100%);
+    color: white;
+    border-radius: 12px 12px 0 0;
+    padding: 1.5rem;
+}
+
+/* NIU Form Styles */
+.niu-form-control {
+    border: 2px solid #e5e7eb;
+    border-radius: 8px;
+    padding: 12px 16px;
+    transition: all 0.2s ease;
+}
+
+.niu-form-control:focus {
+    border-color: var(--niu-green-primary);
+    box-shadow: 0 0 0 3px rgba(0, 128, 0, 0.1);
+    outline: none;
+}
+
+/* NIU Alert Styles */
+.niu-alert-success {
+    background-color: var(--niu-green-lightest);
+    border-color: var(--niu-green-lighter);
+    color: var(--niu-green-dark);
+}
+
+/* NIU Loading Animation */
+.niu-spinner {
+    border: 3px solid #f3f4f6;
+    border-top: 3px solid var(--niu-green-primary);
+    border-radius: 50%;
+    animation: niu-spin 1s linear infinite;
+}
+
+@keyframes niu-spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* NIU Background Patterns */
+.niu-bg-pattern {
+    background-image: 
+        radial-gradient(circle at 25% 25%, rgba(0, 128, 0, 0.03) 0%, transparent 50%),
+        radial-gradient(circle at 75% 75%, rgba(0, 128, 0, 0.03) 0%, transparent 50%);
+}
+
+.niu-bg-dots {
+    background-image: radial-gradient(rgba(0, 128, 0, 0.1) 1px, transparent 1px);
+    background-size: 20px 20px;
+}
+
+/* NIU Fade In Animation */
+.niu-fade-in {
+    animation: niuFadeIn 0.8s ease-in-out;
+}
+
+@keyframes niuFadeIn {
+    from { 
+        opacity: 0; 
+        transform: translateY(20px); 
+    }
+    to { 
+        opacity: 1; 
+        transform: translateY(0); 
+    }
+}
+
+/* NIU Survey Status Badges */
+.niu-badge-active {
+    background-color: var(--niu-green-primary);
+    color: white;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.niu-badge-inactive {
+    background-color: #ef4444;
+    color: white;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+/* NIU Typography */
+.niu-heading {
+    font-weight: 700;
+    color: #1f2937;
+    line-height: 1.2;
+}
+
+.niu-heading-primary {
+    color: var(--niu-green-primary);
+}
+
+.niu-text-muted {
+    color: #6b7280;
+}
+
+/* NIU Responsive Utilities */
+@media (max-width: 768px) {
+    .niu-card {
+        margin-bottom: 1rem;
+    }
+    
+    .niu-header-gradient {
+        padding: 1rem 0;
+    }
+    
+    .niu-logo-lg {
+        width: 48px;
+        height: 48px;
+        font-size: 18px;
+    }
+}
+
+/* Tailwind Integration Helpers */
+.niu-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+@media (min-width: 640px) {
+    .niu-container {
+        padding: 0 1.5rem;
+    }
+}
+
+@media (min-width: 1024px) {
+    .niu-container {
+        padding: 0 2rem;
+    }
+}
+
+/* NIU Admin Panel Customizations */
+.niu-admin-header {
+    background: var(--niu-green-primary) !important;
+}
+
+.niu-admin-sidebar {
+    border-right: 3px solid var(--niu-green-primary);
+}
+
+/* Print Styles */
+@media print {
+    .niu-header-gradient,
+    .btn-niu-primary,
+    .btn-niu-outline {
+        background: white !important;
+        color: black !important;
+        border: 1px solid black !important;
+    }
+    
+    .niu-card {
+        box-shadow: none !important;
+        border: 1px solid #ccc !important;
+    }
+} 

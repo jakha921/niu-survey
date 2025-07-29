@@ -1,0 +1,4 @@
+Django>=4.2.0
+django-unfold>=0.20.0
+django-simple-history>=4.0.0
+requests>=2.31.0 

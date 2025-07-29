@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ survey.title }} - NIU Survey Platform</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+        body {
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+        }
+        .niu-green {
+            background: linear-gradient(135deg, #008000 0%, #00a000 100%);
+        }
+        .btn-primary {
+            background: linear-gradient(135deg, #008000 0%, #00a000 100%);
+        }
+        .btn-primary:hover {
+            background: linear-gradient(135deg, #006000 0%, #008000 100%);
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Header -->
+    <header class="niu-green shadow-lg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <!-- Logo and Brand -->
+                <div class="flex items-center space-x-4">
+                    <div class="w-8 h-8 bg-white rounded-md flex items-center justify-center">
+                        <span class="text-green-600 font-bold text-sm">NIU</span>
+                    </div>
+                    <div class="hidden sm:block">
+                        <h1 class="text-white font-semibold text-lg">Navoi Innovation University</h1>
+                        <p class="text-green-100 text-sm">Survey Platform</p>
+                    </div>
+                </div>
+                
+                <!-- Navigation -->
+                <nav class="hidden sm:flex sm:items-center sm:space-x-4">
+                    <a href="{% url 'surveys:survey_list' %}" class="text-white hover:text-green-100 px-3 py-2 rounded-md text-sm font-medium transition-colors">
+                        Surveys
+                    </a>
+                    {% if user.is_authenticated %}
+                        <a href="/admin/" target="_blank" class="text-white hover:text-green-100 px-3 py-2 rounded-md text-sm font-medium transition-colors">
+                            Admin
+                        </a>
+                    {% endif %}
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="pt-16 pb-20">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <!-- Page Header -->
+            <div class="text-center mb-12">
+                <!-- University Logo Placeholder -->
+                <div class="mb-8">
+                    <div class="w-20 h-20 bg-green-600 rounded-lg flex items-center justify-center mx-auto">
+                        <span class="text-white font-bold text-2xl">NIU</span>
+                    </div>
+                </div>
+                
+                <h1 class="text-4xl font-bold text-gray-900 mb-4">
+                    {{ survey.title }}
+                </h1>
+                <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+                    {% if survey.description %}
+                        {{ survey.description }}
+                    {% else %}
+                        Please complete the survey below. Your feedback is important to help us improve our university services and academic programs.
+                    {% endif %}
+                </p>
+                
+                <!-- Survey Meta Information -->
+                <div class="mt-8 flex flex-col sm:flex-row items-center justify-center space-y-2 sm:space-y-0 sm:space-x-8 text-sm text-gray-500">
+                    <div class="flex items-center space-x-2">
+                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd"></path>
+                        </svg>
+                        <span>Created: {{ survey.created_at|date:"d.m.Y в H:i" }}</span>
+                    </div>
+                    {% if survey.created_by %}
+                    <div class="flex items-center space-x-2">
+                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd"></path>
+                        </svg>
+                        <span>By: {{ survey.created_by.get_full_name|default:survey.created_by.username }}</span>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+
+            <!-- Survey Form Container -->
+            <div class="bg-white rounded-lg shadow-lg border border-gray-200 overflow-hidden">
+                <!-- Form Header -->
+                <div class="niu-green px-6 py-4">
+                    <div class="flex items-center justify-between">
+                        <h2 class="text-xl font-semibold text-white">
+                            University Feedback Survey
+                        </h2>
+                        <div class="flex space-x-3">
+                            <a href="{{ survey.google_form_url }}" 
+                               target="_blank" 
+                               class="inline-flex items-center px-4 py-2 text-sm font-medium text-green-600 bg-white rounded-md hover:bg-gray-50 transition-colors">
+                                <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+                                </svg>
+                                Open in New Tab
+                            </a>
+                            <a href="{% url 'surveys:survey_embed' survey.slug %}" 
+                               target="_blank" 
+                               class="inline-flex items-center px-4 py-2 text-sm font-medium text-white bg-green-700 hover:bg-green-800 rounded-md transition-colors">
+                                <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4"></path>
+                                </svg>
+                                Fullscreen
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Google Form Iframe -->
+                <div class="p-6">
+                    <div class="w-full" style="min-height: 600px;">
+                        <iframe 
+                            src="{{ embed_url }}" 
+                            width="100%" 
+                            height="800" 
+                            frameborder="0" 
+                            marginheight="0" 
+                            marginwidth="0"
+                            class="w-full rounded-md"
+                            title="{{ survey.title }}"
+                            id="survey-iframe">
+                            Loading survey form...
+                        </iframe>
+                    </div>
+                </div>
+                
+                <!-- Form Footer -->
+                <div class="bg-gray-50 px-6 py-4 border-t border-gray-200">
+                    <div class="text-center">
+                        <p class="text-sm text-gray-600 mb-2">
+                            Having trouble with the form? 
+                            <a href="mailto:survey@niuedu.uz" class="text-green-600 hover:text-green-700 font-medium transition-colors">
+                                Contact our support team
+                            </a>
+                        </p>
+                        <div class="flex items-center justify-center space-x-2 text-xs text-gray-500">
+                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clip-rule="evenodd"></path>
+                            </svg>
+                            <span>Your responses are secure and confidential</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Additional Information -->
+            <div class="mt-12 grid md:grid-cols-3 gap-6">
+                <div class="bg-white rounded-lg shadow-md p-6 text-center">
+                    <div class="w-12 h-12 niu-green rounded-full flex items-center justify-center mx-auto mb-4">
+                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="font-semibold text-gray-900 mb-2">Anonymous</h3>
+                    <p class="text-sm text-gray-600">Your responses are completely anonymous and confidential.</p>
+                </div>
+                
+                <div class="bg-white rounded-lg shadow-md p-6 text-center">
+                    <div class="w-12 h-12 niu-green rounded-full flex items-center justify-center mx-auto mb-4">
+                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="font-semibold text-gray-900 mb-2">Quick</h3>
+                    <p class="text-sm text-gray-600">Takes only a few minutes to complete the survey.</p>
+                </div>
+                
+                <div class="bg-white rounded-lg shadow-md p-6 text-center">
+                    <div class="w-12 h-12 niu-green rounded-full flex items-center justify-center mx-auto mb-4">
+                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="font-semibold text-gray-900 mb-2">Impactful</h3>
+                    <p class="text-sm text-gray-600">Your feedback helps us improve our services and programs.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html> 
