@@ -4,19 +4,19 @@
 
 UNFOLD = {
     "SITE_TITLE": "NIU Survey Admin",
-    "SITE_HEADER": "Navoi Innovation University - Survey Management",
+    "SITE_HEADER": "NIU Survey Management",
     "SITE_URL": "/",
-    "SITE_ICON": {
-        "light": lambda request: "/static/niu-icon.svg",  # light mode
-        "dark": lambda request: "/static/niu-icon-dark.svg",  # dark mode
-    },
+    # "SITE_ICON": {
+    #     "light": lambda request: "/static/niu-icon.svg",  # light mode
+    #     "dark": lambda request: "/static/niu-icon-dark.svg",  # dark mode
+    # },
     # "SITE_LOGO": {
     #     "light": lambda request: "/static/niu-logo-light.svg",  # light mode
     #     "dark": lambda request: "/static/niu-logo-dark.svg",  # dark mode
     # },
     
     # symbol
-    "SITE_SYMBOL": "restaurant_menu",
+    # "SITE_SYMBOL": "restaurant_menu",
     
     "SHOW_HISTORY": True,  # show/hide "History" button, default: True
     "SHOW_VIEW_ON_SITE": True,  # show/hide "View on site" button, default: True
@@ -75,16 +75,7 @@ UNFOLD = {
                 "title": "NIU Dashboard",
                 "separator": True,  # Top border
                 "items": [
-                    {
-                        "title": "Dashboard",
-                        "icon": "dashboard",  # Supported icon set: https://fonts.google.com/icons
-                        "link": "/admin/",
-                    },
-                    {
-                        "title": "View Public Site",
-                        "icon": "public",
-                        "link": "/",
-                    },
+
                     {
                         "title": "All Surveys",
                         "icon": "poll",
@@ -96,7 +87,7 @@ UNFOLD = {
             {
                 "title": "User Management",
                 "separator": True,
-                "collapsible": True,
+                "collapsible": False,
                 "items": [
                     {
                         "title": "Users",
@@ -110,47 +101,26 @@ UNFOLD = {
                     },
                 ],
             },
-            {
-                "title": "NIU Resources",
-                "separator": True,
-                "collapsible": True,
-                "items": [
-                    {
-                        "title": "University Website",
-                        "icon": "school",
-                        "link": "https://niuedu.uz",
-                    },
-                    {
-                        "title": "Help & Support",
-                        "icon": "help",
-                        "link": "mailto:survey@niuedu.uz",
-                    },
-                ],
-            },
+
         ],
     },
-    "TABS": [
-        {
-            "models": [
-                "surveys.survey",
-            ],
-            "items": [
-                {
-                    "title": "All Surveys", 
-                    "icon": "poll",
-                    "link": "/admin/surveys/survey/",
-                },
-                {
-                    "title": "Survey History", 
-                    "icon": "history",
-                    "link": "/admin/surveys/historicalsurvey/",
-                },
-                {
-                    "title": "Public View", 
-                    "icon": "public",
-                    "link": "/",
-                },
-            ],
-        },
-    ],
+    # "TABS": [
+    #     {
+    #         "models": [
+    #             "surveys.survey",
+    #         ],
+    #         "items": [
+    #             {
+    #                 "title": "All Surveys", 
+    #                 "icon": "poll",
+    #                 "link": "/admin/surveys/survey/",
+    #             },
+    #             {
+    #                 "title": "Public View", 
+    #                 "icon": "public",
+    #                 "link": "/",
+    #             },
+    #         ],
+    #     },
+    # ],
 } 
