@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ survey.title }} - NIU Survey Platform</title>
+    <title>{{ survey.title }} - NIU So'rovnoma Platformasi</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
         body {
             font-family: 'Inter', system-ui, -apple-system, sans-serif;
         }
-        .niu-header {
+        .niu-green {
             background: linear-gradient(135deg, #008000 0%, #00a000 100%);
         }
         .btn-close {
@@ -32,8 +32,8 @@
             text-decoration: none;
         }
         .main-content {
-            margin-top: 70px;
-            height: calc(100vh - 70px);
+            margin-top: 64px;
+            height: calc(100vh - 64px);
         }
         .google-form-iframe {
             width: 100%;
@@ -74,12 +74,6 @@
             margin-bottom: 1rem;
         }
         @media (max-width: 768px) {
-            .header {
-                padding: 0.75rem;
-            }
-            .survey-title {
-                font-size: 1rem;
-            }
             .btn-close {
                 padding: 0.25rem 0.5rem;
                 font-size: 0.9rem;
@@ -88,20 +82,18 @@
     </style>
 </head>
 <body class="min-h-screen bg-gray-50 overflow-hidden">
-    <!-- Header -->
-    <header class="niu-header shadow-lg">
+    <!-- Navigation -->
+    <nav class="niu-green shadow-lg fixed w-full top-0 z-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between h-16">
-                <!-- Logo and Survey Title -->
-                <div class="flex items-center space-x-4">
-                    <a href="{% url 'surveys:survey_list' %}" class="w-8 h-8 bg-white rounded-md flex items-center justify-center hover:bg-gray-50 transition-colors">
-                        <span class="text-green-600 font-bold text-sm">NIU</span>
-                    </a>
-                    <div>
-                        <h1 class="text-white font-semibold text-lg survey-title">{{ survey.title }}</h1>
-                        <p class="text-green-100 text-sm hidden sm:block">Navoi Innovation University Survey</p>
+                <!-- Logo and Brand -->
+                <a href="{% url 'surveys:survey_list' %}" class="flex items-center space-x-4 hover:opacity-90 transition-opacity">
+                    <img src="https://niuedu.uz/images/logo/logo-white.png" alt="NIU Logo" class="h-8 w-auto">
+                    <div class="hidden sm:block">
+                        <h1 class="text-white font-semibold text-lg">Navoi Innovation University</h1>
+                        <p class="text-green-100 text-sm">So'rovnoma Platformasi</p>
                     </div>
-                </div>
+                </a>
                 
                 <!-- Action Buttons -->
                 <div class="flex items-center space-x-3">
@@ -115,7 +107,7 @@
                     </a>
                     {% endif %}
                     <button onclick="closeSurvey()" class="btn-close">
-                        <span class="hidden sm:inline">Close</span>
+                        <span class="hidden sm:inline">Yopish</span>
                         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
                         </svg>
@@ -123,7 +115,7 @@
                 </div>
             </div>
         </div>
-    </header>
+    </nav>
     
     <!-- Main Content -->
     <main class="main-content">
@@ -131,8 +123,8 @@
         <div class="loading" id="loading">
             <div class="loading-spinner"></div>
             <div>
-                <p class="font-medium">Loading NIU Survey</p>
-                <p class="text-sm text-gray-500">Please wait while we prepare your form...</p>
+                                        <p class="font-medium">NIU So'rovnomasi Yuklanmoqda</p>
+                        <p class="text-sm text-gray-500">Iltimos, formangiz tayyorlanayotguncha kuting...</p>
             </div>
         </div>
         
@@ -144,22 +136,22 @@
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.732-.833-2.502 0L4.732 16.5c-.77.833.192 2.5 1.732 2.5z"></path>
                     </svg>
                 </div>
-                <h3 class="text-xl font-semibold text-gray-900 mb-2">Unable to load survey</h3>
-                <p class="text-gray-600 mb-6">The survey form could not be loaded. This might be due to network issues or form restrictions.</p>
+                <h3 class="text-xl font-semibold text-gray-900 mb-2">So'rovnomani yuklash imkoni yo'q</h3>
+                <p class="text-gray-600 mb-6">So'rovnoma formasini yuklash imkoni bo'lmadi. Bu tarmoq muammolari yoki forma cheklovlari tufayli bo'lishi mumkin.</p>
                 <div class="space-y-3">
                     <a href="{{ survey.google_form_url }}" target="_blank" 
                        class="inline-flex items-center justify-center w-full px-4 py-3 text-base font-medium text-white bg-green-600 hover:bg-green-700 rounded-lg transition-colors">
                         <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
                         </svg>
-                        Open in Google Forms
+                        Google Forms'da Ochish
                     </a>
                     <button onclick="location.reload()" 
                             class="inline-flex items-center justify-center w-full px-4 py-3 text-base font-medium text-gray-700 bg-gray-100 hover:bg-gray-200 rounded-lg transition-colors">
                         <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path>
                         </svg>
-                        Refresh Page
+                        Sahifani Yangilash
                     </button>
                 </div>
             </div>

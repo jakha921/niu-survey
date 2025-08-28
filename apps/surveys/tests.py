@@ -135,8 +135,8 @@ class SurveyViewTests(TestCase):
         )
         
         self.assertEqual(response.status_code, 200)
-        self.assertContains(response, 'Требуется авторизация')
-        self.assertContains(response, 'Войти в систему')
+        self.assertContains(response, 'Autentifikatsiya Talab Qilinadi')
+        self.assertContains(response, 'Tizimga Kirish')
 
 
  

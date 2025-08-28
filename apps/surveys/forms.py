@@ -6,7 +6,7 @@ class NIIEDULoginForm(forms.Form):
     """Форма для аутентификации через NII EDU"""
     
     login = forms.CharField(
-        label='Логин',
+        label='Login',
         max_length=20,
         widget=forms.TextInput(attrs={
             'class': 'w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent',
@@ -16,21 +16,21 @@ class NIIEDULoginForm(forms.Form):
         validators=[
             RegexValidator(
                 regex=r'^\d+$',
-                message='Логин должен содержать только цифры'
+                message='Login faqat raqamlardan iborat bo\'lishi kerak'
             )
         ],
-        help_text='Введите ваш логин (только цифры)'
+        help_text='Login kiriting (faqat raqamlar)'
     )
     
     password = forms.CharField(
-        label='Пароль',
+        label='Parol',
         max_length=100,
         widget=forms.PasswordInput(attrs={
             'class': 'w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent',
-            'placeholder': 'Введите пароль',
+            'placeholder': 'Parol kiriting',
             'autocomplete': 'current-password'
         }),
-        help_text='Введите ваш пароль от NII EDU'
+        help_text='NII EDU parolingizni kiriting'
     )
     
     def clean_login(self):
@@ -40,7 +40,7 @@ class NIIEDULoginForm(forms.Form):
         login = login.strip()
         
         if not login:
-            raise forms.ValidationError('Логин не может быть пустым')
+            raise forms.ValidationError('Login bo\'sh bo\'lishi mumkin emas')
         
         return login
     
@@ -49,9 +49,9 @@ class NIIEDULoginForm(forms.Form):
         password = self.cleaned_data['password']
         
         if not password:
-            raise forms.ValidationError('Пароль не может быть пустым')
+            raise forms.ValidationError('Parol bo\'sh bo\'lishi mumkin emas')
         
         if len(password) < 4:
-            raise forms.ValidationError('Пароль должен содержать минимум 4 символа')
+            raise forms.ValidationError('Parol kamida 4 belgidan iborat bo\'lishi kerak')
         
         return password 

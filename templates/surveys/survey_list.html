@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 
-{% block title %}NIU Survey Platform - Navoi Innovation University{% endblock %}
+{% block title %}NIU So'rovnoma Platformasi - Navoi Innovation University{% endblock %}
 
 {% block body_class %}bg-white bg-pattern{% endblock %}
 
@@ -12,20 +12,20 @@
         <div class="mb-16">
             <!-- Welcome Title -->
             <h2 class="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 mb-6 leading-tight">
-                Welcome to NIU
-                <span class="block text-green-600">Survey Platform</span>
+                NIU So'rovnoma
+                <span class="block text-green-600">Platformasiga Xush Kelibsiz</span>
             </h2>
             
             <!-- Subtitle -->
             <p class="text-lg sm:text-xl text-gray-600 mb-12 max-w-3xl mx-auto leading-relaxed">
-                Your voice matters. Please take a moment to complete our official university surveys 
-                and help us improve the educational experience for all students.
+                Sizning ovozingiz muhim. Iltimos, bizning rasmiy universitet so'rovnomalarini to'ldirish uchun vaqt ajrating 
+                va barcha talabalar uchun ta'lim tajribasini yaxshilashga yordam bering.
             </p>
 
             {% if surveys %}
                 <!-- Available Surveys Section -->
                 <div class="mb-16">
-                    <h3 class="text-2xl font-bold text-gray-900 mb-8">Available Surveys</h3>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-8">Mavjud So'rovnomalar</h3>
                     
                     <!-- Surveys Grid -->
                     <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
@@ -42,7 +42,7 @@
                                     {% if survey.description %}
                                         {{ survey.short_description }}
                                     {% else %}
-                                        <em>Описание не добавлено</em>
+                                        <em>Tavsif qo'shilmagan</em>
                                     {% endif %}
                                 </p>
                             </div>
@@ -54,7 +54,7 @@
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
                                     </svg>
-                                    Пройти опрос
+                                    So'rovnomani To'ldirish
                                 </a>
                                 {% if not survey.is_login_req %}
                                 <a href="{{ survey.google_form_url }}" 
@@ -63,7 +63,7 @@
                                     <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
                                     </svg>
-                                    Открыть в Google Forms
+                                    Google Forms'da Ochish
                                 </a>
                                 {% endif %}
                             </div>
@@ -141,16 +141,16 @@
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
                             </svg>
                         </div>
-                        <h3 class="text-2xl font-bold text-gray-900 mb-4">No Surveys Available</h3>
+                        <h3 class="text-2xl font-bold text-gray-900 mb-4">So'rovnomalar Mavjud Emas</h3>
                         <p class="text-gray-600 mb-8 max-w-md mx-auto">
-                            There are currently no active surveys available. Please check back later or contact the administration.
+                            Hozirda faol so'rovnomalar mavjud emas. Iltimos, keyinroq tekshiring yoki ma'muriyat bilan bog'laning.
                         </p>
                         <a href="/admin/" target="_blank" 
                            class="btn-primary inline-flex items-center px-6 py-3 text-base font-semibold text-white rounded-lg focus:outline-none focus:ring-4 focus:ring-green-200">
                             <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
                             </svg>
-                            Create First Survey
+                            Birinchi So'rovnomani Yaratish
                         </a>
                     </div>
                 </div>
@@ -164,8 +164,8 @@
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                         </svg>
                     </div>
-                    <h3 class="font-semibold text-gray-900 mb-2">Quick & Easy</h3>
-                    <p class="text-sm text-gray-600">Takes only 5-10 minutes to complete</p>
+                    <h3 class="font-semibold text-gray-900 mb-2">Tez va Oson</h3>
+                    <p class="text-sm text-gray-600">To'ldirish uchun faqat 5-10 daqiqa kerak</p>
                 </div>
                 
                 <div class="bg-white rounded-xl shadow-md p-6 border border-gray-100 hover:shadow-lg transition-shadow duration-300">
@@ -174,8 +174,8 @@
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
                         </svg>
                     </div>
-                    <h3 class="font-semibold text-gray-900 mb-2">Secure & Private</h3>
-                    <p class="text-sm text-gray-600">Your responses are completely confidential</p>
+                    <h3 class="font-semibold text-gray-900 mb-2">Xavfsiz va Maxfiy</h3>
+                    <p class="text-sm text-gray-600">Sizning javoblaringiz to'liq maxfiy</p>
                 </div>
                 
                 <div class="bg-white rounded-xl shadow-md p-6 border border-gray-100 hover:shadow-lg transition-shadow duration-300">
@@ -184,37 +184,37 @@
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
                         </svg>
                     </div>
-                    <h3 class="font-semibold text-gray-900 mb-2">Make an Impact</h3>
-                    <p class="text-sm text-gray-600">Help improve university services and programs</p>
+                    <h3 class="font-semibold text-gray-900 mb-2">Tasir Qoldiring</h3>
+                    <p class="text-sm text-gray-600">Universitet xizmatlari va dasturlarini yaxshilashga yordam bering</p>
                 </div>
             </div>
 
             <!-- Additional Information -->
             <div class="bg-gray-50 rounded-xl p-8 border border-gray-200">
-                <h3 class="text-xl font-semibold text-gray-900 mb-4">Why Your Feedback Matters</h3>
+                <h3 class="text-xl font-semibold text-gray-900 mb-4">Nima uchun sizning fikringiz muhim</h3>
                 <p class="text-gray-600 mb-6 leading-relaxed">
-                    At Navoi Innovation University, we are committed to continuous improvement. 
-                    Your honest feedback helps us enhance our academic programs, campus facilities, 
-                    and student services to create the best possible learning environment.
+                    Navoi Innovation University'da biz doimiy yaxshilanishga intilamiz. 
+                    Sizning samimiy fikringiz bizning akademik dasturlar, kampus imkoniyatlari 
+                    va talaba xizmatlarini yaxshilashga yordam beradi va eng yaxshi o'qish muhitini yaratadi.
                 </p>
                 <div class="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-8 text-sm text-gray-500">
                     <div class="flex items-center space-x-2">
                         <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
                             <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
                         </svg>
-                        <span>Anonymous responses</span>
+                        <span>Anonim javoblar</span>
                     </div>
                     <div class="flex items-center space-x-2">
                         <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
                             <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
                         </svg>
-                        <span>Data protection compliant</span>
+                        <span>Ma'lumotlarni himoya qilish standartlariga mos</span>
                     </div>
                     <div class="flex items-center space-x-2">
                         <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
                             <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
                         </svg>
-                        <span>Results used for improvement</span>
+                        <span>Natijalar yaxshilash uchun ishlatiladi</span>
                     </div>
                 </div>
             </div>
